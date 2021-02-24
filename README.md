@@ -40,3 +40,4 @@ Table of Content
   Change the admin user and password
   - `docker build -t jenkins_arm64:latest .`
   - `docker run -itd --rm --privileged --name jenkins -p 8080:8080 --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password --env JENKINS_IP=192.168.4.90:8080 jenkins_arm64`
+  - `docker run -itd --rm --privileged --name jenkins -p 8080:8080 --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password --env JENKINS_IP=192.168.4.90:8080 jenkins_arm64`
