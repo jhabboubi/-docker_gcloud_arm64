@@ -30,7 +30,7 @@ Table of Content
 ## jenkins
 
 - ### Jenkins Configured Docker Image for ARM64 (Raspberry Pi 4)
-  - built on built on [jenkins4eval/jenkins](https://hub.docker.com/r/jenkins4eval/jenkins)
+  - built on [jenkins/jenkins](https://hub.docker.com/r/jenkins/jenkins)
   - install Jenkins plugins using plugins.txt
   - configure Jenkins using [JCasC](https://www.jenkins.io/projects/jcasc/)
   - [Documentation and Instructions](https://www.digitalocean.com/community/tutorials/how-to-automate-jenkins-setup-with-docker-and-jenkins-configuration-as-code)
@@ -38,5 +38,15 @@ Table of Content
 
 - ### Usage
   Change the admin user and password
+  - `docker build -t jenkins:jcasc .`
+  - `docker run -it --name jenkins --rm -p 8080:8080 --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password jenkins:jcasc`
+  - Note: You can mount a volume such as `/var/jenkins_home` when running your container like so:
+  - `docker run -it --name jenkins --rm -p 8080:8080 -v /var/jenkins_home:/var_jenkins_home --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password jenkins:jcasc` The Dockerfile environment variable named `CASC_JENKINS_CONFIG` has had its value changed to `/var/jcasc/jcasc.yaml` in order to prevent the jcasc.yaml file from being hidden after mounting a volume.
+  
+  or
+  
   - `docker build -t jenkins_arm64:latest .`
   - `docker run -itd --rm --privileged --name jenkins -p 8080:8080 --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password --env JENKINS_IP=192.168.4.90:8080 jenkins_arm64`
+
+
+
