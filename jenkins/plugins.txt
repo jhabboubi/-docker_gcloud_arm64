@@ -32,4 +32,3 @@ github-pullrequest:latest
 kubernetes:latest
 terraform:latest
 docker-plugin:latest
-ec2:latest
