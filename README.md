@@ -40,8 +40,7 @@ Table of Content
   Change the admin user and password
   - `docker build -t jenkins:jcasc .`
   - `docker run -it --name jenkins --rm -p 8080:8080 --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password jenkins:jcasc`
-  - #### Notes
-  You can mount a volume such as `/var/jenkins_home` when running your container like so:
+  - Note: You can mount a volume such as `/var/jenkins_home` when running your container like so:
   - `docker run -it --name jenkins --rm -p 8080:8080 -v /var/jenkins_home:/var_jenkins_home --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password jenkins:jcasc` The Dockerfile environment variable named `CASC_JENKINS_CONFIG` has had its value changed to `/var/jcasc/jcasc.yaml` in order to prevent the jcasc.yaml file from being hidden after mounting a volume.
   
   or
