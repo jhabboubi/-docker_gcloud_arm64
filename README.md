@@ -39,3 +39,12 @@ Table of Content
 - ### Usage
   Change the admin user and password
   - `docker build -t jenkins_arm64:latest . && docker run -d -u root --name jenkins -p 8080:8080 --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password --env JENKINS_IP=192.168.4.90:8080 -v /var/jenkins_home:/var/jenkins_home jenkins_arm64`
+---
+## vagrant tomcat8
+
+- ### ubuntu 16.04 updated and tomcat 8 installed
+
+- ### Usage
+  - `vagrant up`
+  - `vagrant destroy`
+   
