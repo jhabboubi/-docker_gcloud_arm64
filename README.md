@@ -4,7 +4,8 @@ Table of Content
 - [Prerequisite](#prerequisite)
 - [gcloud](#gcloud)
 - [jenkins](#jenkins)
-
+- [vagrant tomcat8](#vagrant-tomcat8)
+- [Dockerize Mariadb with auto restart and volume](#dockerize-mariadb-with-auto-restart-and-volume)
 
 
 
@@ -47,4 +48,7 @@ Table of Content
 - ### Usage
   - `vagrant up`
   - `vagrant destroy`
-   
+---
+## Dockerize Mariadb with auto restart and volume
+  - `docker network create app_name`
+  - `docker run -p 3306:3306 --name db --network app_name -v data:/data --restart always -e MYSQL_DATABASE=test -e MYSQL_ROOT_PASSWORD=root -d mariadb`
