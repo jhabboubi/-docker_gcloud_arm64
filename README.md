@@ -52,3 +52,6 @@ Table of Content
 ## Dockerize Mariadb with auto restart and volume
   - `docker network create app_name`
   - `docker run -p 3306:3306 --name db --network app_name -v data:/data --restart always -e MYSQL_DATABASE=test -e MYSQL_ROOT_PASSWORD=root -d mariadb`
+---
+## Dockerize MongoDB with auto restart and volume
+  -  `docker run -d --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root -e MONGO_INITDB_DATABASE=test --network app_name -v mangodb:/data --restart always mongo`
