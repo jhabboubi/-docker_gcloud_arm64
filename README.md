@@ -4,7 +4,6 @@ Table of Content
 - [Prerequisite](#prerequisite)
 - [gcloud](#gcloud)
 - [jenkins](#jenkins)
-- [- `docker build -t jenkins_arm64:latest . && docker run -d -u root --name jenkins -p 8080:8080 --env JENKINS_ADMIN_ID=admin --env JENKINS_ADMIN_PASSWORD=password --env JENKINS_IP=192.168.4.90:8080 -v /var/jenkins_home:/var/jenkins_home jenkins_arm64`](#--docker-build--t-jenkins_arm64latest---docker-run--d--u-root---name-jenkins--p-80808080---env-jenkins_admin_idadmin---env-jenkins_admin_passwordpassword---env-jenkins_ip1921684908080--v-varjenkins_homevarjenkins_home-jenkins_arm64)
 - [vagrant tomcat8](#vagrant-tomcat8)
 - [- `vagrant destroy`](#--vagrant-destroy)
 - [Dockerize Mariadb with auto restart and volume](#dockerize-mariadb-with-auto-restart-and-volume)
