@@ -7,6 +7,6 @@ COPY jcasc.yaml /usr/share/jenkins/ref/jcasc.yaml
 # RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
 RUN java -jar /usr/share/jenkins/ref/plugin-manager.jar --verbose -f /usr/share/jenkins/ref/plugins.txt 
 RUN chown -R jenkins:jenkins /usr/share/jenkins/ref/plugins
-RUN systemctl status jenkins
-RUN systemctl restart jenkins
-RUN systemctl status jenkins
+# RUN systemctl status jenkins
+# RUN systemctl restart jenkins
+# RUN systemctl status jenkins
