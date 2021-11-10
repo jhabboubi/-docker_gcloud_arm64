@@ -36,6 +36,7 @@ Table of Content
   - configure Jenkins using [JCasC](https://www.jenkins.io/projects/jcasc/)
   - [Documentation and Instructions](https://www.digitalocean.com/community/tutorials/how-to-automate-jenkins-setup-with-docker-and-jenkins-configuration-as-code)
   - JCASC refrences `server_ip:8080/configuration-as-code/reference`
+  - [install jenkinsci plugin installation manager](https://github.com/jenkinsci/plugin-installation-manager-tool/)
 
 - ### Usage
   Change the admin user and password
