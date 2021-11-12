@@ -5,9 +5,9 @@ Table of Content
 - [gcloud](#gcloud)
 - [jenkins](#jenkins)
 - [vagrant tomcat8](#vagrant-tomcat8)
-- [- `vagrant destroy`](#--vagrant-destroy)
 - [Dockerize Mariadb with auto restart and volume](#dockerize-mariadb-with-auto-restart-and-volume)
 - [Dockerize MongoDB with auto restart and volume](#dockerize-mongodb-with-auto-restart-and-volume)
+- [Vagrant provisioning and configuration with ansible](#vagrant-provisioning-and-configuration-with-ansible)
 
 
 
