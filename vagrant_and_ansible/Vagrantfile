@@ -1,0 +1,114 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+
+  
+    config.vm.define "m1" do |m1|
+      m1.vm.box = "generic/ubuntu1804"
+      m1.vm.hostname = "m1"
+      m1.vm.network "public_network", ip: "192.168.4.164", bridge: "Intel(R) Dual Band Wireless-AC 3165"
+
+
+      m1.vm.provision "shell", inline: <<-SHELL
+      apt-get install software-properties-common -y
+      add-apt-repository --yes --update ppa:ansible/ansible
+      apt-get install ansible -y
+      export ANSIBLE_HOST_KEY_CHECKING=False
+      SHELL
+      m1.vm.provision :shell, path: "script.sh", privileged: false
+      m1.vm.provision "file", source: "hosts", destination: "$HOME/hosts"
+      m1.vm.provision "file", source: "playbook.yml", destination: "$HOME/playbook.yml"
+      m1.vm.provision "shell", inline: "cp /home/vagrant/hosts /etc/ansible/hosts"
+      m1.vm.provision "file", source: "ansible.cfg", destination: "$HOME/ansible.cfg"
+      m1.vm.provision "shell", inline: "cp /home/vagrant/ansible.cfg /etc/ansible/ansible.cfg" 
+    end
+  
+
+    config.vm.define "m2" do |m2|
+      m2.vm.box = "generic/ubuntu1804"
+      m2.vm.hostname = "m2"
+      m2.vm.network "public_network", ip: "192.168.4.165", bridge: "Intel(R) Dual Band Wireless-AC 3165"
+    end
+
+    config.vm.define "m3" do |m3|
+      m3.vm.box = "generic/ubuntu1804"
+      m3.vm.hostname = "m3"
+      m3.vm.network "public_network", ip: "192.168.4.166", bridge: "Intel(R) Dual Band Wireless-AC 3165"
+
+    end
+
+    config.vm.provider "virtualbox" do |vb|
+      #   # Display the VirtualBox GUI when booting the machine
+      #   vb.gui = true
+      #
+      #   # Customize the amount of memory on the VM:
+        vb.memory = "1024"
+        vb.cpus = 1
+    
+      end
+  # The most common configuration options are documented and commented below.
+  # For a complete reference, please see the online documentation at
+  # https://docs.vagrantup.com.
+
+  # Every Vagrant development environment requires a box. You can search for
+  # boxes at https://vagrantcloud.com/search.
+  #config.vm.box = "generic/ubuntu1804"
+
+  # Disable automatic box update checking. If you disable this, then
+  # boxes will only be checked for updates when the user runs
+  # `vagrant box outdated`. This is not recommended.
+  # config.vm.box_check_update = false
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine. In the example below,
+  # accessing "localhost:8080" will access port 80 on the guest machine.
+  # NOTE: This will enable public access to the opened port
+  # config.vm.network "forwarded_port", guest: 80, host: 8080
+
+  # Create a forwarded port mapping which allows access to a specific port
+  # within the machine from a port on the host machine and only allow access
+  # via 127.0.0.1 to disable public access
+  # config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+
+  # Create a private network, which allows host-only access to the machine
+  # using a specific IP.
+  # config.vm.network "private_network", ip: "192.168.33.10"
+
+  # Create a public network, which generally matched to bridged network.
+  # Bridged networks make the machine appear as another physical device on
+  # your network.
+  #config.vm.network "public_network" , bridge: "Intel(R) Dual Band Wireless-AC 3165"
+
+  # Share an additional folder to the guest VM. The first argument is
+  # the path on the host to the actual folder. The second argument is
+  # the path on the guest to mount the folder. And the optional third
+  # argument is a set of non-required options.
+  # config.vm.synced_folder "../data", "/vagrant_data"
+
+  # Provider-specific configuration so you can fine-tune various
+  # backing providers for Vagrant. These expose provider-specific options.
+  # Example for VirtualBox:
+  #
+
+  #
+  # View the documentation for the provider you are using for more
+  # information on available options.
+
+  # Enable provisioning with a shell script. Additional provisioners such as
+  # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
+  # documentation for more information about their specific syntax and use.
+#   config.vm.provision "shell", inline: <<-SHELL
+#     apt-get update
+#     apt-get upgrade -y
+#     
+#   SHELL
+#   end
+#ssh-keygen -q -b 2048 -t rsa -N "" -C "creating SSH" -f ~/.ssh/id_rsa creates="~/.ssh/id_rsa"
+
+
+end

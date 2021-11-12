@@ -1,0 +1,14 @@
+---            
+- name: Install
+  hosts: all   
+  become: yes  
+  tasks:       
+  - name: latest htop
+    apt:
+      name: htop
+      state: latest
+  - name: latest stress
+    apt:
+      name: stress
+      state: latest
+

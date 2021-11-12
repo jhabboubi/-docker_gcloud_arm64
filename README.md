@@ -7,8 +7,8 @@ Table of Content
 - [vagrant tomcat8](#vagrant-tomcat8)
 - [- `vagrant destroy`](#--vagrant-destroy)
 - [Dockerize Mariadb with auto restart and volume](#dockerize-mariadb-with-auto-restart-and-volume)
-- [- `docker run -p 3306:3306 --name db --network app_name -v data:/data --restart always -e MYSQL_DATABASE=test -e MYSQL_ROOT_PASSWORD=root -d mariadb`](#--docker-run--p-33063306---name-db---network-app_name--v-datadata---restart-always--e-mysql_databasetest--e-mysql_root_passwordroot--d-mariadb)
 - [Dockerize MongoDB with auto restart and volume](#dockerize-mongodb-with-auto-restart-and-volume)
+
 
 
 
@@ -59,3 +59,7 @@ Table of Content
 ---
 ## Dockerize MongoDB with auto restart and volume
   -  `docker run -d --name mongodb -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=root -e MONGO_INITDB_ROOT_PASSWORD=root -e MONGO_INITDB_DATABASE=test --network app_name -v mangodb:/data --restart always mongo`
+---
+## Vagrant provisioning and configuration with ansible
+  - make sure virtualbox is installed on the host
+  - `vagrant up`
