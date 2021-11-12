@@ -1,5 +1,5 @@
 [control]
-localhost              ansible_connection=local
+m1         ansible_ssh_host=localhost              ansible_connection=local
 [fleet]
-192.168.4.165     ansible_connection=ssh        ansible_user=vagrant        ansible_ssh_pass=vagrant
-192.168.4.166     ansible_connection=ssh        ansible_user=vagrant        ansible_ssh_pass=vagrant
+m2         ansible_ssh_host=192.168.4.165     ansible_connection=ssh        ansible_user=vagrant        ansible_ssh_pass=vagrant
+m3         ansible_ssh_host=192.168.4.166     ansible_connection=ssh        ansible_user=vagrant        ansible_ssh_pass=vagrant
