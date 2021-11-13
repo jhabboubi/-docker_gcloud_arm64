@@ -23,8 +23,7 @@
   hosts: control
   become: yes
   vars:
-    required: [apt-transport-https,ca-certificates,curl,software-properties-common,virtualenv,python3-pip,python3-setu
-ptools]
+    required: [apt-transport-https,ca-certificates,curl,software-properties-common,virtualenv,python3-pip,python3-setuptools]
 
   tasks:
 
