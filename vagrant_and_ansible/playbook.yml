@@ -1,14 +1,16 @@
 ---            
 - name: Install
-  hosts: all   
-  become: yes  
-  tasks:       
-  - name: latest htop
-    apt:
-      name: htop
-      state: latest
-  - name: latest stress
-    apt:
-      name: stress
-      state: latest
+  hosts: all
+  become: yes
+  vars:
+    packages: [git,vim,htop,stress]
 
+  tasks:
+  - name: update and upgrade debian
+    when: ansible_facts['os_family'] == "Debian"
+    apt: upgrade=dist update_cache=yes
+
+  - name: install packages
+    apt:
+      name: '{{ packages }}'
+      state: latest

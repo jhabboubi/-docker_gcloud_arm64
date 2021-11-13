@@ -2,7 +2,8 @@
 # Adds a crontab entry to curl google.com every hour on the 5th minute
 
 # Cron expression
-cron="* * * * * ansible-playbook playbook.yml"
+# Everyday 
+cron="0 0 * * * ansible-playbook playbook.yml"
 # Escape all the asterisks so we can grep for it
 cron_escaped=$(echo "$cron" | sed s/\*/\\\\*/g)
 
