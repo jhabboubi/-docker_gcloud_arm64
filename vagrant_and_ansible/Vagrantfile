@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
     apt-get update
     update-alternatives --remove python /usr/bin/python
     update-alternatives --install /usr/bin/python python /usr/bin/python3 10
-    #apt-get -y install python3-pip
+    apt-get -y install python3-pip
     #pip3 --no-input install ansible --user
     apt-get install software-properties-common -y
     add-apt-repository --yes --update ppa:ansible/ansible
@@ -107,11 +107,11 @@ Vagrant.configure("2") do |config|
 # Enable provisioning with a shell script. Additional provisioners such as
 # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
 # documentation for more information about their specific syntax and use.
-#   config.vm.provision "shell", inline: <<-SHELL
-#     apt-get update
-#     apt-get upgrade -y
-#
-#   SHELL
+   config.vm.provision "shell", inline: <<-SHELL
+     apt-get update
+     apt-get upgrade -y
+
+   SHELL
 #   end
 #ssh-keygen -q -b 2048 -t rsa -N "" -C "creating SSH" -f ~/.ssh/id_rsa creates="~/.ssh/id_rsa"
 
