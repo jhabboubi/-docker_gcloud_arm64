@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   vars:
-    packages: [net-tools,speedtest-cli,wget,curl,git,vim,htop,stress,python-pip,nano,dnsutils,whois,ufw]
+    packages: [mlocate,net-tools,speedtest-cli,wget,curl,git,vim,htop,stress,python-pip,nano,dnsutils,whois,ufw]
 
   tasks:
   - name: update and upgrade debian
