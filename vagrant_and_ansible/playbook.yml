@@ -1,9 +1,9 @@
 ---
-- name: updates and install
+- name: system wide update and upgrade
   hosts: all
   become: yes
   vars:
-    packages: [git,vim,htop,stress,python-pip,nano]
+    packages: [net-tools,speedtest-cli,wget,curl,git,vim,htop,stress,python-pip,nano,dnsutils,whois,ufw]
 
   tasks:
   - name: update and upgrade debian
@@ -27,7 +27,7 @@
 
   tasks:
 
-  - name: Install required system packages
+  - name: Install required packages for docker
     apt:
       name: '{{ required }}'
       state: latest

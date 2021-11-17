@@ -3,7 +3,7 @@
 
 # Cron expression
 # Everyday 
-cron="0 0 * * * ansible-playbook playbook.yml"
+cron="0 * * * * ansible-playbook playbook.yml"
 # Escape all the asterisks so we can grep for it
 cron_escaped=$(echo "$cron" | sed s/\*/\\\\*/g)
 
