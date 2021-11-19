@@ -3,6 +3,8 @@ m1         ansible_ssh_host=localhost              ansible_connection=local
 [fleet]
 m2         ansible_ssh_host=192.168.4.165
 m3         ansible_ssh_host=192.168.4.166
+m4         ansible_ssh_host=192.168.4.167
+m5         ansible_ssh_host=192.168.4.168
 [all:vars]
 ansible_connection=ssh
 ansible_user=vagrant

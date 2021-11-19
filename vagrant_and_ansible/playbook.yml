@@ -4,7 +4,7 @@
   become: yes
   vars:
     packages: [mlocate,net-tools,speedtest-cli,wget,curl,git,vim,htop,stress,python-pip,nano,dnsutils,whois,ufw]
-
+    
   tasks:
   - name: update and upgrade debian
     when: ansible_facts['os_family'] == "Debian"
@@ -14,8 +14,22 @@
       update_cache: yes
       autoremove: yes
 
-  - name: install packages
+  - name: install packages on debian
+    when: ansible_facts['os_family'] == "Debian"
     apt:
+      name: '{{ packages }}'
+      state: latest
+
+  - name: update and upgrade redhat
+    when: ansible_facts['os_family'] == "RedHat"
+    dnf:
+      name: "*"
+      state: latest
+      
+
+  - name: install packages on redhat
+    when: ansible_facts['distribution'] == "Fedora"
+    dnf:
       name: '{{ packages }}'
       state: latest
 
