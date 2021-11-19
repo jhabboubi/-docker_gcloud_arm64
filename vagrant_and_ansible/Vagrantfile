@@ -31,6 +31,7 @@ Vagrant.configure("2") do |config|
     m1.vm.provision "shell", inline: "cp /home/vagrant/hosts /etc/ansible/hosts"
     m1.vm.provision "file", source: "ansible.cfg", destination: "$HOME/ansible.cfg"
     m1.vm.provision "shell", inline: "cp /home/vagrant/ansible.cfg /etc/ansible/ansible.cfg"
+    m1.vm.provision "shell", inline: "rm /home/vagrant/ansible.cfg ; rm /home/vagrant/hosts"
     m1.vm.disk :disk, size: "15GB", primary: true
     m1.vm.provider "virtualbox" do |v|
       v.memory = 2048
