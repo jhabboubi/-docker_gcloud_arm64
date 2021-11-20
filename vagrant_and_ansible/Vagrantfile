@@ -11,7 +11,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "m1" do |m1|
     m1.vm.box = "generic/ubuntu1804"
     m1.vm.hostname = "m1"
-    m1.vm.network "public_network", ip: "192.168.4.164", bridge: "Intel(R) Dual Band Wireless-AC 3165"
+    m1.vm.network "public_network", ip: "192.168.4.161", bridge: "Intel(R) Dual Band Wireless-AC 3165"
 
 
     m1.vm.provision "shell", inline: <<-SHELL
@@ -47,21 +47,21 @@ end
   config.vm.define "m2" do |m2|
     m2.vm.box = "generic/ubuntu1804"
     m2.vm.hostname = "m2"
-    m2.vm.network "public_network", ip: "192.168.4.165", bridge: "Intel(R) Dual Band Wireless-AC 3165"
+    m2.vm.network "public_network", ip: "192.168.4.162", bridge: "Intel(R) Dual Band Wireless-AC 3165"
     m2.vm.disk :disk, size: "6GB", primary: true  
 end
 
   config.vm.define "m3" do |m3|
     m3.vm.box = "generic/ubuntu1804"
     m3.vm.hostname = "m3"
-    m3.vm.network "public_network", ip: "192.168.4.166", bridge: "Intel(R) Dual Band Wireless-AC 3165"
+    m3.vm.network "public_network", ip: "192.168.4.163", bridge: "Intel(R) Dual Band Wireless-AC 3165"
     m3.vm.disk :disk, size: "6GB", primary: true
   end
 
   config.vm.define "m4" do |m4|
     m4.vm.box = "centos/8"
     m4.vm.hostname = "m4"
-    m4.vm.network "public_network", ip: "192.168.4.167", bridge: "Intel(R) Dual Band Wireless-AC 3165"     
+    m4.vm.network "public_network", ip: "192.168.4.164", bridge: "Intel(R) Dual Band Wireless-AC 3165"     
     m4.vm.disk :disk, size: "6GB", primary: true
     m4.vm.provision "shell", inline: <<-SHELL
       sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
@@ -73,10 +73,23 @@ end
 
   config.vm.define "m5" do |m5|
     m5.vm.box = "generic/fedora33"
-    m5.vm.hostname = "m4"
-    m5.vm.network "public_network", ip: "192.168.4.168", bridge: "Intel(R) Dual Band Wireless-AC 3165"     
+    m5.vm.hostname = "m5"
+    m5.vm.network "public_network", ip: "192.168.4.165", bridge: "Intel(R) Dual Band Wireless-AC 3165"     
     m5.vm.disk :disk, size: "6GB", primary: true
   end
+
+#  config.vm.define "m6" do |m6|
+#    m6.vm.box = "ramsey/macos-catalina"
+#    m6.vm.hostname = "m6"
+#    m6.vm.network "public_network", ip: "192.168.4.166", bridge: "Intel(R) Dual Band Wireless-AC 3165"
+#    m6.vm.disk :disk, size: "20GB", primary: true
+#    m6.vm.provider "virtualbox" do |v|
+#      v.memory = 4096
+#      v.cpus = 2
+#      v.gui = true
+#    end
+
+#  end
 
   config.vm.provider "virtualbox" do |vb|
     #   # Display the VirtualBox GUI when booting the machine

@@ -62,4 +62,11 @@ Table of Content
 ---
 ## Vagrant provisioning and configuration with ansible
   - make sure virtualbox is installed on the host
-  - `vagrant up`
+  - make sure vagrant installed on host
+  - use the terminal and change directory to vagrant_and_ansible
+  - `vagrant up` for all vms or `vagrant up m1 m2 m3` 
+  	- m1: ubuntu 18.04 ansible control and docker is installed
+	- m2: ubuntu 18.04 
+	- m3: ubuntu 18.04
+	- m4: centos 8
+	- m5: fedora 33
