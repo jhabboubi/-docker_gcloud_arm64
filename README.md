@@ -8,6 +8,7 @@ Table of Content
 - [Dockerize Mariadb with auto restart and volume](#dockerize-mariadb-with-auto-restart-and-volume)
 - [Dockerize MongoDB with auto restart and volume](#dockerize-mongodb-with-auto-restart-and-volume)
 - [Vagrant provisioning and configuration with ansible](#vagrant-provisioning-and-configuration-with-ansible)
+- [Dockerize SonarQube and Postgres for ARM64 Architecture (Raspberry Pi 4)](#Dockerize-SonarQube-and-Postgres-for-ARM64-Architecture-(Raspberry-Pi-4))
 
 
 
@@ -70,3 +71,31 @@ Table of Content
 	- m3: ubuntu 18.04
 	- m4: centos 8
 	- m5: fedora 33
+
+---
+
+## Dockerize SonarQube and Postgres for ARM64 Architecture (Raspberry Pi 4)
+- create network `docker create network sonarqube_network`
+- create postgres container `docker run --name postgres -d --restart unless-stopped -p 5432:5432 -e POSTGRES_PASSWORD=root -v postgres_data:/var/lib/postgresql/data postgres:12.2`
+- create database in postgres `docker exec -it postgres bash` then `psql -U postgres` then create schema `create database sonar;`
+- create sonarqube container `docker run -u sonarqube -d --name sonarqube \
+           -v sonarqube_data:/opt/sonarqube/data \
+           -v sonarqube_extensions:/opt/sonarqube/extensions \
+           -v sonarqube_logs:/opt/sonarqube/logs \
+           -e SONARQUBE_JDBC_USERNAME="postgres" \
+           -e SONARQUBE_JDBC_PASSWORD="root" \
+           -e SONARQUBE_JDBC_URL="jdbc:postgresql://postgres:5432/sonar" \
+           --network sonarqube_network \
+           -p 9000:9000 \
+           koolwithk/sonarqube-arm:9.2.4-community`
+
+- **Quick Fix**
+  - if the container crashes... if you see this error in /opt/sonar/logs/es.log :
+    or `docker logs sonarqube`
+
+    2020.05.17 14:46:12 ERROR es[][o.e.b.Bootstrap] node validation exception
+    [1] bootstrap checks failed
+    [1]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+    Execute this on your node :
+
+    `sudo sysctl -w vm.max_map_count=262144`
